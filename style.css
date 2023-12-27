@@ -1,0 +1,145 @@
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100vh;
+	background-color: rgba(220, 204, 163, 0.5);
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+	margin-bottom: 20px;
+	color: white;
+	font-size: 2em;
+	background-color: rgba(41, 74, 54,0.5);
+	width: 50%;
+	border-radius: 10px;
+	padding: 12px;
+	text-align: center;
+	
+}
+.extrah1{
+	font-size: 15px;
+	font-style: italic;
+	font-weight: 100;
+}
+
+
+.tile-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 10px;
+}
+
+.tile {
+	width: 250px;
+	height: 250px;
+	background-color: #3498db;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+	cursor: pointer;
+	font-size: 16px;
+	transition: background-color 0.3s ease, transform 0.5s ease;
+}
+
+.tile:hover {
+	background-color: #2980b9;
+	box-shadow: 5px 5px 8px grey;
+}
+
+.tile-content {
+	opacity: 1;
+	transition: opacity 0.3s ease;
+	padding-left: 50px;
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+.tile.clicked {
+	transform: rotateY(180deg);
+}
+
+.tile.clicked .tile-content {
+	opacity: 0;
+}
+
+.tile.clicked .new-content {
+	opacity: 1;
+}
+
+.new-content {
+	opacity: 0;
+	transform: rotateY(180deg);
+	text-align: left;
+	width: 100%;
+	font-weight: 700;
+}
+
+@media (max-width: 768px) {
+	.tile-container {
+		grid-template-columns: 1fr;
+	}
+}
+#love {
+	background-image: url(./1.jpg);
+	background-size: cover;
+	opacity: 0.7;
+}
+#eat {
+	background-image: url("./assets/ramne.jpg");
+	background-size: cover;
+	opacity: 0.7;
+}
+#watch {
+	background-image: url("./assets/WATHH.jpeg");
+	background-size: cover;
+	opacity: 0.5	;
+	color: whitesmoke;
+	
+	
+}
+#skin{
+	background-image: url("./assets/skin.jpg");
+	background-size: cover;
+	opacity: 0.6	;
+	font-weight: bolder;
+}
+#shubhu{
+	background-image: url("./assets/59116BD7-A42F-4F91-98C6-C3084BF33C1B.JPG");
+	background-size: cover;
+	opacity: 0.6;
+	
+}
+#facts{
+	background-image: url("./assets/facts.jpg");
+	background-size: cover;
+	opacity: 0.6;
+	
+}
+#know{
+	background-image: url("./assets/heart.jpg");
+	background-size: cover;
+	opacity: 0.6;
+}
+#sunset{
+	background-image: url("./assets/sunset.jpg");
+	background-size: cover;
+	opacity: 0.6;
+}
+#wish{
+	background-image: url("./assets/wish.jpg");
+	background-size: cover;
+	opacity: 0.6;
+}
+.extraclass{
+	font-weight: 900;
+	font-size: 16px;
+}
+span {
+	font-size: 12px;
+	margin-left: 20px;
+}
