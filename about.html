@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Shubhu Baby</title>
+		<style>
+			body {
+				font-family: "Arial", sans-serif;
+				text-align: center;
+				margin: 20px;
+				background-color: rgba(220, 204, 163, 0.5);
+			}
+
+			h1 {
+				color: white;
+				font-size: 2em;
+				background-color: rgba(41, 74, 54, 0.5);
+				width: 50%;
+				border-radius: 10px;
+				padding: 12px;
+				text-align: center;
+				margin-left: 25%;
+			}
+
+			video {
+				max-width: 100%;
+			}
+
+			#yes-btn,
+			#no-btn {
+				font-size: 16px;
+				padding: 10px 20px;
+				margin: 10px;
+				cursor: pointer;
+				transition: transform 0.1s ease; /* Reduced animation duration */
+				position: relative;
+				border-radius: 5px;
+			}
+
+			#no-btn.moving {
+				animation: moveAway 0.5s infinite linear; /* Faster animation */
+				pointer-events: none; /* Disable pointer events while moving */
+			}
+
+			@keyframes moveAway {
+				0%,
+				20%,
+				50%,
+				80%,
+				100% {
+					transform: translate(0, 0);
+				}
+				40% {
+					transform: translate(50px, 50px);
+				}
+				60% {
+					transform: translate(-50px, -50px);
+				}
+			}
+
+			#emoji-img {
+				display: none;
+				max-width: 100%;
+			}
+
+			#thank-you-msg {
+				display: none;
+				color: white;
+				font-size: 2em;
+				background-color: rgba(41, 74, 54, 0.5);
+				width: 50%;
+				border-radius: 10px;
+				padding: 12px;
+				text-align: center;
+				margin-left: 25%;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Will you be mine and let me take you here on a date?</h1>
+
+		<video controls height="30%px" width="60%">
+			<source src="./IMG_3344.mp4" type="video/mp4" />
+			Your browser does not support the video tag.
+		</video>
+
+		<div>
+			<button id="yes-btn" onclick="showThankYouMessage()">Yes</button>
+			<button
+				id="no-btn"
+				onmouseover="vanishFor5Seconds()"
+				onmouseout="stopMoving()"
+			>
+				No
+			</button>
+		</div>
+
+		<div id="thank-you-msg">
+			Thank you! I promise you won't regret it &#10084;&#65039;
+		</div>
+
+		<script>
+			let movingInterval;
+			let vanishTimeout;
+			let thankYouShown = false;
+
+			function showThankYouMessage() {
+				if (!thankYouShown) {
+					document.getElementById("thank-you-msg").style.display =
+						"block";
+					thankYouShown = true;
+					// Stop the movement when the "Yes" button is clicked
+					stopMoving();
+				}
+			}
+
+			function vanishFor5Seconds() {
+				// Vanish the button for 5 seconds
+				document.getElementById("no-btn").style.visibility = "hidden";
+				vanishTimeout = setTimeout(() => {
+					document.getElementById("no-btn").style.visibility =
+						"visible";
+				}, 500);
+			}
+
+			function stopMoving() {
+				// Stop the movement
+				document.getElementById("no-btn").classList.remove("moving");
+				clearInterval(movingInterval);
+				// Reset the button position
+				document.getElementById("no-btn").style.transform =
+					"translate(0, 0)";
+			}
+
+			function moveRandomly() {
+				if (!thankYouShown) {
+					// Move the button away from the cursor
+					const button = document.getElementById("no-btn");
+					const rect = button.getBoundingClientRect();
+					const cursorX = event.clientX;
+					const cursorY = event.clientY;
+
+					const deltaX = cursorX - rect.x - rect.width / 2;
+					const deltaY = cursorY - rect.y - rect.height / 2;
+
+					const distance = Math.hypot(deltaX, deltaY);
+
+					if (distance < 2) {
+						// Move away from the cursor
+						const randomX = Math.random() * window.innerWidth;
+						const randomY = Math.random() * window.innerHeight;
+						button.style.transform = `translate(${randomX}px, ${randomY}px)`;
+					}
+				}
+			}
+		</script>
+	</body>
+</html>
